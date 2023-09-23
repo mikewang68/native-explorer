@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "img/logos-solana/dark-explorer-logo.svg";
+import Logo from "img/logos-solana/sino1.jpg";
 import { clusterPath } from "utils/url";
 import { Link, NavLink } from "react-router-dom";
 import { ClusterStatusButton } from "components/ClusterStatusButton";
@@ -12,7 +12,7 @@ export function Navbar() {
     <nav className="navbar navbar-expand-md navbar-light">
       <div className="container">
         <Link to={clusterPath("/")}>
-          <img src={Logo} height="30" alt="Velas Native Explorer" />
+        <img src={Logo} height="50" width="120" alt="" />
         </Link>
 
         <button
@@ -43,21 +43,16 @@ export function Navbar() {
                 Inspector
               </NavLink>
             </li>
-            <li className="nav-item">
-              <a className="nav-link url-link" href="https://velasvalidators.com" target="_blank" rel="noreferrer">
-              velasvalidators.com
-              </a>
-            </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link url-link" href="https://velasity.com/" target="_blank" rel="noreferrer">
               velasity.com
               </a>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <a className="nav-link url-link" href="https://evmexplorer.velas.com/" target="_blank" rel="noreferrer">
                 EVM Explorer
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
 
