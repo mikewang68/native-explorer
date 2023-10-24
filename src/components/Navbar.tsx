@@ -43,6 +43,11 @@ export function Navbar() {
                 Inspector
               </NavLink>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="http://192.168.101.102:8080/main-index.html" target="_blank" rel="noreferrer">
+              Wallet
+              </a>
+            </li>
             {/* <li className="nav-item">
               <a className="nav-link url-link" href="https://velasity.com/" target="_blank" rel="noreferrer">
               velasity.com
