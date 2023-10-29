@@ -206,3 +206,53 @@ function ClusterToggle() {
     </div>
   );
 }
+interface Block {
+  height: number;
+  hash: string;
+  transactions: number;
+  time: string;
+  }
+  
+  const blocks: Block[] = [
+  // Sample data
+  {
+  height: 1,
+  hash: "123abc",
+  transactions: 3,
+  time: "2022-01-01",
+  },
+  {
+  height: 2,
+  hash: "456def",
+  transactions: 5,
+  time: "2022-01-02",
+  },
+  ];
+  
+  const BlockTable: React.FC = () => {
+  return (
+  <table>
+  <thead>
+  <tr>
+  <th>区块高度</th>
+  <th>区块哈希</th>
+  <th>交易数量</th>
+  <th>时间</th>
+  </tr>
+  </thead>
+  <tbody>
+  {blocks.map((block, index) => (
+  <tr key={index}>
+  <td>{block.height}</td>
+  <td>{block.hash}</td>
+  <td>{block.transactions}</td>
+  <td>{block.time}</td>
+  </tr>
+  ))}
+  </tbody>
+  </table>
+  );
+  };
+  
+  export default BlockTable;
+    

@@ -10,6 +10,7 @@ import {
 import { lamportsToSol, slotsToHumanString } from "utils";
 import { ClusterStatus, useCluster } from "providers/cluster";
 import { TpsCard } from "components/TpsCard";
+import { LatestBlock } from "components/block/latestBlock";
 import { displayTimestampWithoutDate, displayTimestampUtc } from "utils/date";
 import { Status, useFetchSupply, useSupply } from "providers/supply";
 import { PublicKey } from "@velas/web3";
@@ -32,6 +33,8 @@ const CLUSTER_STATS_TIMEOUT = 5000;
 const STAKE_HISTORY_ACCOUNT = "SysvarStakeHistory1111111111111111111111111";
 const PRICE_REFRESH = 10000;
 
+
+
 export function ClusterStatsPage() {
   return (
     <div className="container mt-4">
@@ -47,6 +50,7 @@ export function ClusterStatsPage() {
         <StatsCardBody />
       </div>
       <TpsCard />
+      <LatestBlock />
     </div>
   );
 }
@@ -512,3 +516,53 @@ function useCoinGecko(coinId: string): CoinGeckoResult | undefined {
 
   return coinInfo;
 }
+interface Block {
+  height: number;
+  hash: string;
+  transactions: number;
+  time: string;
+  }
+  
+const blocks: Block[] = [
+  // Sample data
+  {
+  height: 1,
+  hash: "123abc",
+  transactions: 3,
+  time: "2022-01-01",
+  },
+  {
+  height: 2,
+  hash: "456def",
+  transactions: 5,
+  time: "2022-01-02",
+  },
+  ];
+  
+  const BlockTable: React.FC = () => {
+  return (
+  <table>
+  <thead>
+  <tr>
+  <th>区块高度</th>
+  <th>区块哈希</th>
+  <th>交易数量</th>
+  <th>时间</th>
+  </tr>
+  </thead>
+  <tbody>
+  {blocks.map((block, index) => (
+  <tr key={index}>
+  <td>{block.height}</td>
+  <td>{block.hash}</td>
+  <td>{block.transactions}</td>
+  <td>{block.time}</td>
+  </tr>
+  ))}
+  </tbody>
+  </table>
+  );
+  };
+  
+  export default BlockTable;
+    

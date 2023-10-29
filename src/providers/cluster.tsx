@@ -10,11 +10,11 @@ export function clusterApiUrl(cluster: string): string {
     case "mainnet-beta":
       return "https://evmexplorer.velas.com/rpc";
     case "testnet":
-      return "https://api.testnet.velas.com";
+      return "http://192.168.101.101:8899";
     case "devnet":
-      return "https://api.devnet.velas.com";
+      return "http://192.168.101.101:8899";
     default:
-      return "https://evmexplorer.velas.com/rpc";
+      return "http://192.168.101.101:8899";
   }
 }
 

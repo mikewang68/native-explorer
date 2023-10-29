@@ -6,7 +6,6 @@ import { MessageBanner } from "components/MessageBanner";
 import { Navbar } from "components/Navbar";
 import { ClusterStatusBanner } from "components/ClusterStatusButton";
 import { SearchBar } from "components/SearchBar";
-
 import { AccountDetailsPage } from "pages/AccountDetailsPage";
 import { TransactionInspectorPage } from "pages/inspector/InspectorPage";
 import { ClusterStatsPage } from "pages/ClusterStatsPage";
