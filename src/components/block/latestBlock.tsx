@@ -23,6 +23,7 @@ export function LatestBlock() {
             console.log('啦啦啦啦阿啊啊啊啊',hash);
         }
         fetchData();
+        setInterval(getBlockHashA, 5000)
     }, []);
 
 
@@ -71,6 +72,7 @@ const [blockHeight, setBlockHeight] = useState<string | null>("");
             console.log('啦啦啦啦阿啊啊啊啊',height);
         }
         fetchData();
+        setInterval(getBlockHeight, 5000)
     }, []);
 
     const getBlockHeight = async () => {
@@ -116,6 +118,7 @@ const [transactionCount, settransactionCount] = useState<string | null>("");
             console.log('啦啦啦啦阿啊啊啊啊',count);
         }
         fetchData();
+        setInterval(gettransactionCount, 5000)
     }, []);
 
     const gettransactionCount = async () => {
@@ -137,7 +140,7 @@ const [transactionCount, settransactionCount] = useState<string | null>("");
           if (response.ok) {
             const jsonResponse = await response.json();
             const transactionCount = jsonResponse.result; // 提取"transactionCount"字段的值
-            console.log('啦啦啦啦阿啊啊啊啊',transactionCount);
+            console.log('啦啦啦啦',transactionCount);
             return transactionCount;
         } else {
             throw new Error('Failed to fetch data');
