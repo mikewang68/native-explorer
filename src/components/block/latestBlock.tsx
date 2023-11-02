@@ -92,7 +92,7 @@ const [blockHeight, setBlockHeight] = useState<string | null>("");
           });
           if (response.ok) {
             const jsonResponse = await response.json();
-            const blockheight = jsonResponse.result.blockHeight; // 提取"blockhash"字段的值
+            const blockheight = jsonResponse.result.blockHeight; // 提取"blockheight"字段的值
             console.log('啦啦啦啦阿啊啊啊啊',blockheight);
             return blockheight;
         } else {
@@ -136,7 +136,7 @@ const [transactionCount, settransactionCount] = useState<string | null>("");
           });
           if (response.ok) {
             const jsonResponse = await response.json();
-            const transactionCount = jsonResponse.result.value.transactionCount; // 提取"blockhash"字段的值
+            const transactionCount = jsonResponse.result; // 提取"transactionCount"字段的值
             console.log('啦啦啦啦阿啊啊啊啊',transactionCount);
             return transactionCount;
         } else {
