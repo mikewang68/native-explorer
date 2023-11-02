@@ -8,7 +8,7 @@ import { localStorageIsAvailable } from "utils";
 export function clusterApiUrl(cluster: string): string {
   switch (cluster) {
     case "mainnet-beta":
-      return "https://evmexplorer.velas.com/rpc";
+      return "http://192.168.101.101:8899";
     case "testnet":
       return "http://192.168.101.101:8899";
     case "devnet":

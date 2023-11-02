@@ -26,6 +26,7 @@
     "@types/react-select": "^3.1.2",
     "@types/socket.io-client": "^3.0.0",
     "@velas/web3": "^0.1.7",
+    "axios": "^1.6.0",
     "bignumber.js": "^9.0.1",
     "bn.js": "^5.2.0",
     "bootstrap": "^4.6.0",
