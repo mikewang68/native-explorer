@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Connection } from "@velas/web3";
 import { useCluster, Cluster } from "providers/cluster";
-// import { exec } from 'child_process';
-const { exec } = require('child_process');
+import { exec } from 'child_process';
+// const { exec } = require('child_process');
 // import { log, time } from "console";
 
 const PAGE_SIZE = 10;
