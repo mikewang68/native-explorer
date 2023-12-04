@@ -23,6 +23,7 @@ import { useVoteAccounts } from "providers/accounts/vote-accounts";
 import * as CoinGecko from "coingecko-api";
 
 import { latestBlockA } from "components/block/latestBlockA";
+import RecentBlocks from "components/block/RecentBlocks";
 
 enum CoingeckoStatus {
   Success,
@@ -52,8 +53,9 @@ export function ClusterStatsPage() {
         <StatsCardBody />
       </div>
       <TpsCard />
-      
-      <LatestBlock />
+
+     <RecentBlocks/>
+      {/* <LatestBlock /> */}
       
     </div>
   );

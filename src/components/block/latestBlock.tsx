@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Connection } from "@velas/web3";
 import { useCluster, Cluster } from "providers/cluster";
 import { exec } from 'child_process';
+import { isTemplateSpan } from "typescript";
 // const { exec } = require('child_process');
 // import { log, time } from "console";
 
@@ -17,28 +18,13 @@ interface BlockInfo {
 
 
 
+
+
 export function LatestBlock() {
 
   //mlh
   const [blockInfoList, setBlockInfoList] = useState<BlockInfo[]>([]);
   const refreshInterval = 2500; // 设置刷新间隔，单位为毫秒（这里是1  秒）
-
-  const command = 'ls -al'; // 你要执行的命令
-
-  exec(command, (error: { message: any; }, stdout: any, stderr: any) => {
-    if (error) {
-      console.error(`Error3333333: ${error.message}`);
-      return;
-    }
-
-    if (stderr) {
-      console.error(`Command stderr333333: ${stderr}`);
-      return;
-    }
-
-    console.log(`Command output33333333: ${stdout}`);
-  });
-
 
 
   useEffect(() => {
@@ -77,7 +63,8 @@ export function LatestBlock() {
           jsonrpc: '2.0',
           id: 1,
           method: 'getConfirmedBlock',
-          params: [String(BigInt(i))],
+          params: [Number(500+i)],
+          // params: [String(BigInt(i)),'json'],
           // params:[ [i],'json'], // 使用 i 来获取不同块的信息
         };
 
@@ -91,9 +78,9 @@ export function LatestBlock() {
 
         if (response.ok) {
           const jsonResponse = await response.json();
-          const blockhash = jsonResponse.result.value.blockhash;
-          const blockHeight = jsonResponse.result.value.blockheader.block_height;
-          const transactionCount = jsonResponse.result.value.blockheader.num_txs;
+          const blockhash = jsonResponse.result.blockhash;
+          const blockHeight = jsonResponse.result.blockHeight;
+          const transactionCount = jsonResponse.result.transactions.length-1;
 
           const blockInfo: BlockInfo = {
             blockhash,
@@ -401,16 +388,16 @@ export function LatestBlock() {
 
   const subTitleStyle = {
     fontSize: '16px',
-    margin: '10px 0 0 10px',
+    margin: '10px 0 10px 10px',
     fontWeight: 500
   }
 
   const latestBlockContent: any = {
     display: 'flex',
     // flexDirection: 'column',
-    justifyContent: 'space-between',
-    'margin': '4px',
-    padding: '4px'
+    justifyContent: 'center',
+    'margin': '2px',
+    padding: '2px'
   }
 
   const latestBlockItemStyle: any = {
@@ -507,7 +494,7 @@ export function LatestBlock() {
         <div style={titleStyle}>Block details</div>
         <div className="card">
           <div style={subTitleStyle}>
-            <p style={{ textAlign: 'center' }}>Latest block</p>
+            <p style={{ textAlign: 'left' }}>Latest block</p>
           </div>
           <div style={latestBlockContent}>
             <div style={latestBlockItemStyle}>
@@ -516,7 +503,7 @@ export function LatestBlock() {
               {/* <span style={{ flex: 1 }}>{blockHeight}</span> */}
 
               <span style={{ flex: 1, width: '100px' }}>{blockHeight.map((height, index) => (
-                <li key={index} style={{ listStyleType: 'none', color: "blue", textAlign: 'center' }}>{height}</li>
+                <li key={index} style={{ listStyleType: 'none', color: "blue", textAlign: 'center' ,backgroundColor: index%2 === 0?'#e0e0e0' : '#ffffff'}}>{height}</li>
               ))}</span>
 
             </div>
@@ -526,7 +513,7 @@ export function LatestBlock() {
 
               <span style={{ flex: 1, width: '100px' }}>
                 {blockHashes.map((hash, index) => (
-                  <li style={{ listStyleType: 'none', color: "blue" }} key={index}>{hash}</li>
+                  <li style={{ listStyleType: 'none', color: "blue" ,backgroundColor: index%2 === 0?'#e0e0e0' : '#ffffff'}} key={index}>{hash}</li>
                 ))}
               </span>
 
@@ -536,7 +523,7 @@ export function LatestBlock() {
               {/* <span style={{ width: '50%' }}>Number of transaction</span> */}
               <span style={{ flex: 1, width: '100px' }}>
                 {transactionCount.map((hash, index) => (
-                  <li style={{ listStyleType: 'none', textAlign: 'center' }} key={index}>{hash}</li>
+                  <li style={{ listStyleType: 'none', textAlign: 'center' ,backgroundColor: index%2 === 0?'#e0e0e0' : '#ffffff'}} key={index}>{hash}</li>
                 ))}
               </span>
             </div>
