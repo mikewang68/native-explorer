@@ -67,49 +67,51 @@ const BlockDetail: React.FC = () => {
             transactionHash: tx.transaction.message.recentBlockhash,
             transactionType: 'YourTransactionTypeHere',
             signer: tx.transaction.message.accountKeys[0],
-            transactionFee: tx.meta.fee, timestamp: blockDetails?.timestamp || 0,
+            transactionFee: tx.meta.fee, 
+            timestamp: blockDetails?.timestamp || 0,
         }));
     };
     return (
         <div className="card">
-            <h1>区块详细信息</h1><Link to={`/`}><button>返回</button></Link>
+            <Link to={`/`}><button style={{ listStyleType: 'none', textAlign: 'left', fontSize: '20px', margin: '15px 20px 0px 10px' }}>返回</button></Link>
+            <p style={{ listStyleType: 'none', textAlign: 'left', fontSize: '22px', margin: '15px 5px 10px 10px'}}>区块详细信息</p>
             {blockDetails && (<div>
-                <p>区块哈希: {blockDetails.blockhash}</p >
-                <p>区块高度: {blockDetails.blockHeight}</p >
-                <p>出块时间: {new Date(blockDetails.timestamp * 1000).toLocaleString()}</p >
-                <p>交易数量: {blockDetails.transactions.length}</p >
-                <h2>交易列表:</h2>
+                <p style={{ margin: '0px 10px 0px 10px',background:'#e0e0e0', fontSize: '17px'}}><b style={{fontWeight: 'bolder'}}>区块哈希:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{blockDetails.blockhash}</p>
+                <p style={{ margin: '0px 10px 0px 10px',background:'#ffffff', fontSize: '17px'}}><b style={{fontWeight: 'bolder'}}>区块高度:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{blockDetails.blockHeight}</p>
+                <p style={{ margin: '0px 10px 0px 10px',background:'#e0e0e0', fontSize: '17px'}}><b style={{fontWeight: 'bolder'}}>出块时间:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{new Date(blockDetails.timestamp * 1000).toLocaleString()}</p >
+                <p style={{ margin: '0px 10px 0px 10px',background:'#ffffff', fontSize: '17px'}}><b style={{fontWeight: 'bolder'}}>交易数量:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{blockDetails.transactions.length}</p >
+                <h2 style={{ listStyleType: 'none', textAlign: 'left', fontSize: '22px', margin: '30px 5px 15px 10px' }}>交易列表</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>交易哈希</th>
+                            <th style={{ listStyleType: 'none', textAlign: 'center', fontWeight: 'bold', backgroundColor: '#ffffff', fontSize: '15px', borderRight:'1px solid black'}}>交易哈希</th>
                             {/* <th>交易类型</th> */}
-                            <th>签名者</th>
-                            <th>交易费用</th>
-                            <th>交易时间</th>
+                            <th style={{ listStyleType: 'none', textAlign: 'center', fontWeight: 'bold', backgroundColor: '#ffffff', fontSize: '15px', borderRight:'1px solid black'}}>签名者</th>
+                            <th style={{ listStyleType: 'none', textAlign: 'center', fontWeight: 'bold', backgroundColor: '#ffffff', fontSize: '15px', borderRight:'1px solid black', whiteSpace: 'nowrap'}}>交易费用</th>
+                            <th style={{ listStyleType: 'none', textAlign: 'center', fontWeight: 'bold', backgroundColor: '#ffffff', fontSize: '15px'}}>交易时间</th>
                         </tr>
                     </thead>
                     <tbody>
                         {blockDetails.transactions.map((tx, index) => (
                             <tr key={index}>
-                                <div
+                                <td
                                     style={{
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         whiteSpace: 'nowrap',
                                         maxWidth: '150px',
+                                        marginTop: '11px',
+                                        borderRight:'1px solid black'
+                                        
                                     }}
                                     title={tx.transactionHash}
                                 >
                                     {tx.transactionHash}
-                                </div>
+                                </td>
                                 {/* <td>{tx.transactionType}</td> */}
-                                <td>{tx.signer}</td>
-
-
-                                
-                                <td>{tx.transactionFee}</td>
-                                <td>{new Date(tx.timestamp * 1000).toLocaleString()}</td>
+                                <td style={{textAlign: 'center',borderRight:'1px solid black'}}>{tx.signer}</td>
+                                <td style={{textAlign: 'center',borderRight:'1px solid black'}}>{tx.transactionFee}</td>
+                                <td style={{textAlign: 'center'}}>{new Date(tx.timestamp * 1000).toLocaleString()}</td>
                             </tr>))}
                     </tbody>
                 </table>
@@ -119,8 +121,21 @@ const BlockDetail: React.FC = () => {
 
 
 
-
-
+ /**                               <div
+                                    style={{
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                        maxWidth: '150px',
+                                        marginTop: '11px',
+                                        borderRight:'1px solid black'
+                                        
+                                    }}
+                                    title={tx.transactionHash}
+                                >
+                                    {tx.transactionHash}
+                                </div>
+*/ 
 //     interface BlockDetailInfo {
 //     blockhash: string;
 //     transactions: any[]; // 根据实际数据结构定义
